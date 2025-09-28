@@ -4,7 +4,7 @@
 
 ## 🚀 使用方法
 
-1. 安装最新版本的[ultralytics]([https://blog.csdn.net/m0_62919535/article/details/151312190])
+1. 安装最新版本的[ultralytics](https://blog.csdn.net/m0_62919535/article/details/151312190)
 
 2. 克隆本仓库：
 
