@@ -29,9 +29,7 @@
 | **FFCA-YOLO** | [CSDN](https://blog.csdn.net/m0_62919535/article/details/151312190) | [FFCA-YOLO for Small Object Detection in Remote Sensing Images](https://ieeexplore.ieee.org/document/10423050)                                            | [GitHub](https://github.com/yemu1138178251/FFCA-YOLO) | *IEEE TGRS*, 2024            |
 | **FBRT-YOLO** | [CSDN](https://blog.csdn.net/m0_62919535/article/details/151573708) | [FBRT-YOLO: Faster and Better for Real-Time Aerial Image Detection](https://arxiv.org/pdf/2504.20670v1)                                                   | [GitHub](https://github.com/galaxy-oss/FCM)           | *AAAI Conference*, 2025      |
 | **LUD-YOLO**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/152164243) | [LUD-YOLO: A novel lightweight object detection network for unmanned aerial vehicle](https://www.sciencedirect.com/science/article/pii/S0020025524012805) | 无                                                     | *Information Sciences*, 2025 |
-                                                 |
-
-
+                                       
 ---
 
 ## 📖 引用
