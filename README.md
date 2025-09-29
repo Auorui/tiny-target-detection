@@ -24,23 +24,13 @@
 
 ## 📌 算法列表
 
-### 1. FFCA-YOLO
+| 方法            | 博客详解                                                                | 论文地址                                                                                                                                                      | 代码仓库                                                  | 发表期刊/会议 & 时间                 |
+| ------------- | ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ---------------------------- |
+| **FFCA-YOLO** | [CSDN](https://blog.csdn.net/m0_62919535/article/details/151312190) | [FFCA-YOLO for Small Object Detection in Remote Sensing Images](https://ieeexplore.ieee.org/document/10423050)                                            | [GitHub](https://github.com/yemu1138178251/FFCA-YOLO) | *IEEE TGRS*, 2024            |
+| **FBRT-YOLO** | [CSDN](https://blog.csdn.net/m0_62919535/article/details/151573708) | [FBRT-YOLO: Faster and Better for Real-Time Aerial Image Detection](https://arxiv.org/pdf/2504.20670v1)                                                   | [GitHub](https://github.com/galaxy-oss/FCM)           | *AAAI Conference*, 2025      |
+| **LUD-YOLO**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/152164243) | [LUD-YOLO: A novel lightweight object detection network for unmanned aerial vehicle](https://www.sciencedirect.com/science/article/pii/S0020025524012805) | 无                                                     | *Information Sciences*, 2025 |
+                                                 |
 
-* **博客详解**：[CSDN](https://blog.csdn.net/m0_62919535/article/details/151312190)
-* **论文地址**：[IEEE Xplore](https://ieeexplore.ieee.org/document/10423050)
-* **代码仓库**：[GitHub](https://github.com/yemu1138178251/FFCA-YOLO)
-
-### 2. FBRT-YOLO
-
-* **博客详解**：[CSDN](https://blog.csdn.net/m0_62919535/article/details/151573708)
-* **论文地址**：[arXiv](https://arxiv.org/pdf/2504.20670v1)
-* **代码仓库**：[GitHub](https://github.com/galaxy-oss/FCM)
-
-### 3. LUD-YOLO
-
-* **博客详解**：[CSDN](https://blog.csdn.net/m0_62919535/article/details/152164243)
-* **论文地址**：[ScienceDirect](https://www.sciencedirect.com/science/article/pii/S0020025524012805)
-* **代码仓库**：无
 
 ---
 
