@@ -11,10 +11,22 @@ import torch
 import torch.nn as nn
 
 from ultralytics.nn.autobackend import check_class_names
-from ultralytics.nn.modules import (
+from ultralytics.nn.extra_modules import (
     ConvNormAct,
     ConvWithoutBN,
-
+    FEM,
+    FFMConcat,
+    SCAM,
+    FCM,
+    FBRTDown,
+    MKP,
+    ASFF3,
+    BiLevelRoutingAttention,
+    C2fBRA,
+    C2fGMCF,
+    TransformerEncoderLayerMSCF,
+)
+from ultralytics.nn.modules import (
     AIFI,
     C1,
     C2,
@@ -71,16 +83,6 @@ from ultralytics.nn.modules import (
     YOLOEDetect,
     YOLOESegment,
     v10Detect,
-
-    FEM,
-    FFMConcat,
-    SCAM,
-    FCM,
-    FBRTDown,
-    MKP,
-    ASFF3,
-    BiLevelRoutingAttention,
-    C2fBRA
 )
 from ultralytics.utils import DEFAULT_CFG_DICT, LOGGER, YAML, colorstr, emojis
 from ultralytics.utils.checks import check_requirements, check_suffix, check_yaml
@@ -1607,6 +1609,7 @@ def parse_model(d, ch, verbose=True):
             FEM,
             FBRTDown,
             C2fBRA,
+            C2fGMCF,
         }
     )
     repeat_modules = frozenset(  # modules with 'repeat' arguments
@@ -1627,6 +1630,7 @@ def parse_model(d, ch, verbose=True):
             C2PSA,
             A2C2f,
             C2fBRA,
+            C2fGMCF,
         }
     )
     for i, (f, n, m, args) in enumerate(d["backbone"] + d["head"]):  # from, number, module, args
@@ -1664,7 +1668,7 @@ def parse_model(d, ch, verbose=True):
                     args.extend((True, 1.2))
             if m is C2fCIB:
                 legacy = False
-        elif m is AIFI:
+        elif m is (AIFI, TransformerEncoderLayerMSCF):
             args = [ch[f], *args]
         elif m in frozenset({HGStem, HGBlock}):
             c1, cm, c2 = ch[f], args[0], args[1]
