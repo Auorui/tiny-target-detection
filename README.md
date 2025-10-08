@@ -24,12 +24,13 @@
 
 ## 📌 算法列表
 
-| 方法            | 博客详解                                                                | 论文地址                                                                                                                                                      | 代码仓库                                                  | 发表期刊/会议 & 时间                 |
-| ------------- | ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ---------------------------- |
-| **FFCA-YOLO** | [CSDN](https://blog.csdn.net/m0_62919535/article/details/151312190) | [FFCA-YOLO for Small Object Detection in Remote Sensing Images](https://ieeexplore.ieee.org/document/10423050)                                            | [GitHub](https://github.com/yemu1138178251/FFCA-YOLO) | *IEEE TGRS*, 2024            |
-| **FBRT-YOLO** | [CSDN](https://blog.csdn.net/m0_62919535/article/details/151573708) | [FBRT-YOLO: Faster and Better for Real-Time Aerial Image Detection](https://arxiv.org/pdf/2504.20670v1)                                                   | [GitHub](https://github.com/galaxy-oss/FCM)           | *AAAI Conference*, 2025      |
-| **LUD-YOLO**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/152164243) | [LUD-YOLO: A novel lightweight object detection network for unmanned aerial vehicle](https://www.sciencedirect.com/science/article/pii/S0020025524012805) | 无                                                     | *Information Sciences*, 2025 |
-                                       
+|  方法  |  博客详解  |  论文地址  | 代码仓库  |  发表期刊/会议 & 时间  |
+| --------------- | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ---------------------------- |
+|  **FFCA-YOLO**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/151312190) | [FFCA-YOLO for Small Object Detection in Remote Sensing Images](https://ieeexplore.ieee.org/document/10423050) | [GitHub](https://github.com/yemu1138178251/FFCA-YOLO) |*IEEE TGRS*, 2024|
+|  **FBRT-YOLO**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/151573708) | [FBRT-YOLO: Faster and Better for Real-Time Aerial Image Detection](https://arxiv.org/pdf/2504.20670v1) | [GitHub](https://github.com/galaxy-oss/FCM)  |*AAAI Conference*, 2025|
+|  **LUD-YOLO**   | [CSDN](https://blog.csdn.net/m0_62919535/article/details/152164243) | [LUD-YOLO: A novel lightweight object detection network for unmanned aerial vehicle](https://www.sciencedirect.com/science/article/pii/S0020025524012805) | 无 |*Information Sciences*, 2025|
+|  **VRF-DETR**   | [CSDN](https://blog.csdn.net/m0_62919535/article/details/152615666) | [An Efficient Aerial Image Detection with Variable Receptive Fields](https://arxiv.org/pdf/2504.15165) | [GitHub](https://github.com/LiuWenbin-CV/VRF-DETR) |*Arxiv*, 2025| 
+
 ---
 
 ## 📖 引用
@@ -73,6 +74,15 @@
 > }
 > ```
 
+> ```bibtex
+> @article{wenbin2025efficient,
+>   title={An Efficient Aerial Image Detection with Variable Receptive Fields},
+>   author={Wenbin, Liu},
+>   journal={arXiv preprint arXiv:2504.15165},
+>   year={2025}
+> }
+> ```
+
 ---
 
 ## 📊 AI-TOD 数据集消融实验结果
@@ -87,6 +97,8 @@
 | YOLOv8n 原版         | 0.558  | 0.165   | 0.160 | 0.0593   |
 | FBRT-YOLOv8n (改进版) | 0.534  | 0.164   | 0.162 | 0.0611   |
 | LUD-YOLOv8n (改进版) | 0.621  | 0.160   | 0.156 | 0.0577   |
+| RT-DETR-resnet50 原版 | 0.645  | 0.133 | 0.0848 | 0.0274 |
+| VRF-DETR (改进版) | 0.632  | 0.0954 | 0.0594 | 0.0189 |  
 
 > 提示：以上结果均为 **30 epoch 的小规模实验**，仅用于对比分析，不代表完整训练的最终性能。
 
