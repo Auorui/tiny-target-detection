@@ -1,6 +1,6 @@
 # Tiny Target Detection
 
-本仓库整理并实现了多个面向 **小目标检测（Tiny Object Detection）** 的改进 YOLO 算法，结合博客解析、论文原文与开源代码，方便学习与复现。
+本仓库整理并实现了多个面向 **小目标检测（Tiny Target Detection）** 的改进 YOLO 算法，结合博客解析、论文原文与开源代码，方便学习与复现。
 
 ## 🚀 使用方法
 
@@ -32,58 +32,7 @@
 |  **FBRT-YOLO**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/151573708) | [FBRT-YOLO: Faster and Better for Real-Time Aerial Image Detection](https://arxiv.org/pdf/2504.20670v1) | [GitHub](https://github.com/galaxy-oss/FCM)  |*AAAI Conference*, 2025|
 |  **LUD-YOLO**   | [CSDN](https://blog.csdn.net/m0_62919535/article/details/152164243) | [LUD-YOLO: A novel lightweight object detection network for unmanned aerial vehicle](https://www.sciencedirect.com/science/article/pii/S0020025524012805) | 无 |*Information Sciences*, 2025|
 |  **VRF-DETR**   | [CSDN](https://blog.csdn.net/m0_62919535/article/details/152615666) | [An Efficient Aerial Image Detection with Variable Receptive Fields](https://arxiv.org/pdf/2504.15165) | [GitHub](https://github.com/LiuWenbin-CV/VRF-DETR) |*Arxiv*, 2025| 
-
----
-
-## 📖 引用
-
-如果你在研究中使用了这些算法，请引用原论文：
-
-> ```bibtex
-> @ARTICLE{10423050,
->   author={Zhang, Yin and Ye, Mu and Zhu, Guiyi and Liu, Yong and Guo, Pengyu and Yan, Junhua},
->   journal={IEEE Transactions on Geoscience and Remote Sensing}, 
->   title={FFCA-YOLO for Small Object Detection in Remote Sensing Images}, 
->   year={2024},
->   volume={62},
->   number={},
->   pages={1-15},
->   keywords={Feature extraction;Remote sensing;YOLO;Convolution;Context-aware services;Finite element analysis;Detectors;Context information;feature fusion;lightweight network;remote sensing image;small object detection},
->   doi={10.1109/TGRS.2024.3363057}}
-> ```
-
-> ```bibtex
-> @inproceedings{xiao2025fbrt,
->   title={FBRT-YOLO: Faster and Better for Real-Time Aerial Image Detection},
->   author={Xiao, Yao and Xu, Tingfa and Xin, Yu and Li, Jianan},
->   booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
->   volume={39},
->   number={8},
->   pages={8673--8681},
->   year={2025}
-> }
-> ```
-
-> ```bibtex
-> @article{fan2025lud,
->   title={LUD-YOLO: A novel lightweight object detection network for unmanned aerial vehicle},
->   author={Fan, Qingsong and Li, Yiting and Deveci, Muhammet and Zhong, Kaiyang and Kadry, Seifedine},
->   journal={Information Sciences},
->   volume={686},
->   pages={121366},
->   year={2025},
->   publisher={Elsevier}
-> }
-> ```
-
-> ```bibtex
-> @article{wenbin2025efficient,
->   title={An Efficient Aerial Image Detection with Variable Receptive Fields},
->   author={Wenbin, Liu},
->   journal={arXiv preprint arXiv:2504.15165},
->   year={2025}
-> }
-> ```
+|  **IF-YOLO**  | 无 | [Unmanned Aerial Vehicle Object Detection Based on Information-Preserving and Fine-Grained Feature Aggregation](https://www.mdpi.com/2072-4292/16/14/2590) | 无 | *Remote Sensing*, 2024 |
 
 ---
 
