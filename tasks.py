@@ -25,6 +25,8 @@ from ultralytics.nn.extra_modules import (
     C2fBRA,
     C2fGMCF,
     TransformerEncoderLayerMSCF,
+    IPFA,
+    CSFM
 )
 from ultralytics.nn.modules import (
     AIFI,
@@ -1610,6 +1612,7 @@ def parse_model(d, ch, verbose=True):
             FBRTDown,
             C2fBRA,
             C2fGMCF,
+            IPFA,
         }
     )
     repeat_modules = frozenset(  # modules with 'repeat' arguments
@@ -1631,9 +1634,11 @@ def parse_model(d, ch, verbose=True):
             A2C2f,
             C2fBRA,
             C2fGMCF,
+            IPFA,
         }
     )
     for i, (f, n, m, args) in enumerate(d["backbone"] + d["head"]):  # from, number, module, args
+        # print(f"Layer {i}: module={m}, current ch={ch}, from={f}")
         m = (
             getattr(torch.nn, m[3:])
             if "nn." in m
@@ -1707,6 +1712,10 @@ def parse_model(d, ch, verbose=True):
         elif m in {SCAM, MKP}:
             c2 = ch[f]
             args = [c2]
+        elif m is CSFM:
+            c_shallow, c_mid, c_deep = [ch[x] for x in f]
+            c2 = c_mid    # 必须写
+            args = [c_shallow, c_mid, c_deep]
         elif m is ASFF3:
             level = args[0]
             # For ASFF3, we need to get actual channel numbers from the input layers
