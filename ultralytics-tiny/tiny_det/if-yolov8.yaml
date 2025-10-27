@@ -1,0 +1,70 @@
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
+# Ultralytics YOLOv8 object detection model with P3/8 - P5/32 outputs
+# Model docs: https://docs.ultralytics.com/models/yolov8
+# Task docs: https://docs.ultralytics.com/tasks/detect
+
+# Parameters
+nc: 80 # number of classes
+scales: # model compound scaling constants, i.e. 'model=yolov8n.yaml' will call yolov8.yaml with scale 'n'
+  # [depth, width, max_channels]
+  n: [0.33, 0.25, 1024] # YOLOv8n summary: 129 layers, 3157200 parameters, 3157184 gradients, 8.9 GFLOPS
+  s: [0.33, 0.50, 1024] # YOLOv8s summary: 129 layers, 11166560 parameters, 11166544 gradients, 28.8 GFLOPS
+  m: [0.67, 0.75, 768] # YOLOv8m summary: 169 layers, 25902640 parameters, 25902624 gradients, 79.3 GFLOPS
+  l: [1.00, 1.00, 512] # YOLOv8l summary: 209 layers, 43691520 parameters, 43691504 gradients, 165.7 GFLOPS
+  x: [1.00, 1.25, 512] # YOLOv8x summary: 209 layers, 68229648 parameters, 68229632 gradients, 258.5 GFLOPS
+
+# YOLOv8.0n backbone
+backbone:
+  # input -> 640×640×3
+  # [from, repeats, module, args]
+  - [-1, 1, Conv, [64, 3, 2]]  # 0-P1/2             320×320×64
+
+  - [-1, 1, IPFA, [128]]       # 1-P2/4            160×160×128
+  - [-1, 3, C2f, [128, True]]  #    S1             160×160×128
+
+  - [-1, 1, IPFA, [256]]       # 3-P3/8            80×80×256
+  - [-1, 6, C2f, [256, True]]  # 4  S2             80×80×256
+
+  - [-1, 1, Conv, [512, 3, 2]] # 5-P4/16           40×40×512
+  - [-1, 6, C2f, [512, True]]  # 6   S3            40×40×512
+
+  - [-1, 1, Conv, [1024, 3, 2]] # 7-P5/32          20×20×1024
+  - [-1, 3, C2f, [1024, True]]  #                  20×20×1024
+  - [-1, 1, SPPF, [1024, 5]] # 9    S4             20×20×1024
+
+# YOLOv8.0n head
+head:
+  # 改进后的FGAFPN
+  # FGAM -> CSFM 融合模块
+  # 输入: P1, P2, P3, P4, P5
+  # 输出: L1, L2, L3, L4(=P5)
+  - [[0, 2, 4], 1, CSFM, [64, 128, 256]]   # 10 - L1 (from P1, P2, P3)      160×160×128
+  - [[2, 4, 6], 1, CSFM, [128, 256, 512]]   # 11 - L2 (from P2, P3, P4)     80×80×256
+  - [[4, 6, 9], 1, CSFM, [256, 512, 1024]]   # 12 - L3 (from P3, P4, SPPF)  40×40×512
+  # L4 == P5
+  - [9, 1, nn.Upsample, [None, 2, "nearest"]] # 13  40×40×1024
+  - [[-1, 12], 1, Concat, [1]] # 14  L3
+  - [-1, 3, C2f, [512]] # 15                       40×40×512
+
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]] # 16   80×80×512
+  - [[-1, 11], 1, Concat, [1]] # 17  L2
+  - [-1, 3, C2f, [256]] # 18 (P3)                  80×80×256
+
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]] # 19   80×80×51
+  - [[-1, 10], 1, Concat, [1]] # 20  L1
+  - [-1, 3, C2f, [128]] # 21 (P1)                  80×80×256
+
+  - [-1, 1, IPFA, [128]] # 22                  40×40×256
+  - [[-1, 18, 11], 1, Concat, [1]]
+  - [-1, 3, C2f, [256]]  # 24
+
+  - [-1, 1, IPFA, [256]] # 25                  40×40×256
+  - [[-1, 15, 12], 1, Concat, [1]]
+  - [-1, 3, C2f, [512]] # 27
+
+  - [-1, 1, Conv, [512, 3, 2]] # 28
+  - [[-1, 9], 1, Concat, [1]] # cat head P5
+  - [-1, 3, C2f, [1024]] # 30 (P5/32-large)
+
+  - [[21, 24, 27, 30], 1, Detect, [nc]] # Detect
