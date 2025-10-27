@@ -4,13 +4,15 @@
 
 ## 🚀 使用方法
 
+### ultralytics系列的改进
+
 1. 安装最新版本的[ultralytics](https://blog.csdn.net/m0_62919535/article/details/151312190)
 
 2. 克隆本仓库：
 
    ```bash
    git clone git@github.com:Auorui/tiny-target-detection.git
-   cd tiny-target-detection
+   cd tiny-target-detection/ultralytics-tiny
    ```
 
 3. 按照下面的要求放置或替换文件：
