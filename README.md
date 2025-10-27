@@ -32,24 +32,26 @@
 |  **FBRT-YOLO**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/151573708) | [FBRT-YOLO: Faster and Better for Real-Time Aerial Image Detection](https://arxiv.org/pdf/2504.20670v1) | [GitHub](https://github.com/galaxy-oss/FCM)  |*AAAI Conference*, 2025|
 |  **LUD-YOLO**   | [CSDN](https://blog.csdn.net/m0_62919535/article/details/152164243) | [LUD-YOLO: A novel lightweight object detection network for unmanned aerial vehicle](https://www.sciencedirect.com/science/article/pii/S0020025524012805) | 无 |*Information Sciences*, 2025|
 |  **VRF-DETR**   | [CSDN](https://blog.csdn.net/m0_62919535/article/details/152615666) | [An Efficient Aerial Image Detection with Variable Receptive Fields](https://arxiv.org/pdf/2504.15165) | [GitHub](https://github.com/LiuWenbin-CV/VRF-DETR) |*Arxiv*, 2025| 
-|  **IF-YOLO**  | 无 | [Unmanned Aerial Vehicle Object Detection Based on Information-Preserving and Fine-Grained Feature Aggregation](https://www.mdpi.com/2072-4292/16/14/2590) | 无 | *Remote Sensing*, 2024 |
+|  **IF-YOLO**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/153835570) | [Unmanned Aerial Vehicle Object Detection Based on Information-Preserving and Fine-Grained Feature Aggregation](https://www.mdpi.com/2072-4292/16/14/2590) | 无 | *Remote Sensing*, 2024 |
 
 ---
 
 ## 📊 AI-TOD 数据集消融实验结果
 
-| 模型                 | 精度 (P) | 召回率 (R) | mAP50 | mAP50-95 |
-| ------------------ | ------ | ------- | ----- | -------- |
-| YOLOv5n 原版         | 0.551  | 0.128   | 0.106 | 0.0310   |
-| YOLOv5n + 预训练      | 0.545  | 0.174   | 0.165 | 0.0569   |
-| YOLOv5m 原版         | 0.753  | 0.171   | 0.166 | 0.0561   |
-| YOLOv5m + NWD 损失   | 0.737  | 0.172   | 0.167 | 0.0546   |
-| FFCA-YOLOv5m (改进版) | 0.783  | 0.224   | 0.224 | 0.0804   |
-| YOLOv8n 原版         | 0.558  | 0.165   | 0.160 | 0.0593   |
-| FBRT-YOLOv8n (改进版) | 0.534  | 0.164   | 0.162 | 0.0611   |
-| LUD-YOLOv8n (改进版) | 0.621  | 0.160   | 0.156 | 0.0577   |
-| RT-DETR-resnet50 原版 | 0.645  | 0.133 | 0.0848 | 0.0274 |
-| VRF-DETR (改进版) | 0.632  | 0.0954 | 0.0594 | 0.0189 |  
+| 模型                  | 精度(P)  | 召回率(R) |  mAP50 | mAP50-95 |
+| --------------------- | -------- | ---------- | -----  | -------- |
+| YOLOv5n 原版          |  0.551   |   0.128    | 0.106  |  0.0310  |
+| YOLOv5n + 预训练      |  0.545   |   0.174    | 0.165  |  0.0569  |
+| YOLOv5m 原版          |  0.753   |   0.171    | 0.166  |  0.0561  |
+| YOLOv5m + NWD 损失    |  0.737   |   0.172    | 0.167  |  0.0546  |
+| FFCA-YOLOv5m (改进版) |  0.783   |   0.224    | 0.224  |  0.0804  |
+| YOLOv8n 原版          |  0.558   |   0.165    | 0.160  |  0.0593  |
+| FBRT-YOLOv8n (改进版) |  0.534   |   0.164    | 0.162  |  0.0611  |
+| LUD-YOLOv8n (改进版)  |  0.621   |   0.160    | 0.156  |  0.0577  |
+| RT-DETR-resnet50 原版 |  0.645   |   0.133    | 0.0848 |  0.0274  |
+| VRF-DETR (改进版)     |  0.632   |   0.0954   | 0.0594 |  0.0189  |
+| YOLOv8s 原版          |  0.548   |   0.189    | 0.193  |  0.0769  |
+| IF-YOLOv8s (改进版)   |  0.647   |   0.190    | 0.193  |  0.0771  |
 
 > 提示：以上结果均为 **30 epoch 的小规模实验**，仅用于对比分析，不代表完整训练的最终性能。
 
