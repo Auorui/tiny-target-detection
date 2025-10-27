@@ -6,7 +6,7 @@
 
 ### ultralytics系列的改进
 
-1. 安装最新版本的[ultralytics](https://blog.csdn.net/m0_62919535/article/details/151312190)
+1. 安装最新版本的 [ultralytics](https://blog.csdn.net/m0_62919535/article/details/151312190)
 
 2. 克隆本仓库：
 
@@ -17,10 +17,42 @@
 
 3. 按照下面的要求放置或替换文件：
 
-   - 将 `extra_modules` 文件夹放到 `./ultralytics/nn/` 下，与modules处于同目录下
+   - 将 `extra_modules` 文件夹放到 `./ultralytics/nn/` 下，与 `modules` 处于同目录下  
    - 将 `tiny_det` 文件夹放到 `./ultralytics/cfg/modules/` 下  
-   - 将 `task.py` 文件替换掉 `./ultralytics/nn/task.py`，主要是其中的parse_model函数
-   - ⚠️ 注意：`tiny_det` 中的一些函数可能还需要在对应的 `__init__.py` 文件中进行导入
+   - 将 `task.py` 文件替换掉 `./ultralytics/nn/task.py`（主要修改的是其中的 `parse_model` 函数）  
+   - ⚠️ 注意：`tiny_det` 中的一些函数可能还需要在对应的 `__init__.py` 文件中进行导入  
+
+---
+
+### mmdet系列的改进
+
+1. 安装最新版本的 [mmdet](https://github.com/open-mmlab/mmdetection)
+
+2. 安装教程请看以下两篇：
+   - [MMCV与MMDetection安装指南](https://blog.csdn.net/m0_62919535/article/details/132595519)
+   - [MMDetection新手教程](https://blog.csdn.net/m0_62919535/article/details/151828419)
+
+3. 按照下面的要求放置或替换文件：
+
+   - 将 `extra_modules` 文件夹放到 `./mmdet` 根目录下  
+   - 将 `models` 下的文件放到对应的同目录下；对于每个添加了新文件的目录，都需要在对应的 `__init__.py` 文件中注册  
+   - 将 `configs_tiny` 放到项目文件根目录中，与 `configs` 文件夹同目录  
+
+最终目录结构如下：
+
+   ```bash
+   mmdetection/
+   ├── mmdet/
+   │   ├── extra_modules/          ← 放在这里
+   │   │   ├── __init__.py
+   │   │   ├── fp16_utils.py
+   │   ├── models/
+   │   ├── structures/
+   │   └── ...
+   ├── configs/
+   ├── configs_tiny/               ← 与configs同级
+   └── 
+   ```
 
 ---
 
