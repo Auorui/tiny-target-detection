@@ -67,7 +67,7 @@
 |  **LUD-YOLO**   | [CSDN](https://blog.csdn.net/m0_62919535/article/details/152164243) | [LUD-YOLO: A novel lightweight object detection network for unmanned aerial vehicle](https://www.sciencedirect.com/science/article/pii/S0020025524012805) | 无 |*Information Sciences*, 2025|
 |  **VRF-DETR**   | [CSDN](https://blog.csdn.net/m0_62919535/article/details/152615666) | [An Efficient Aerial Image Detection with Variable Receptive Fields](https://arxiv.org/pdf/2504.15165) | [GitHub](https://github.com/LiuWenbin-CV/VRF-DETR) |*Arxiv*, 2025| 
 |  **IF-YOLO**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/153835570) | [Unmanned Aerial Vehicle Object Detection Based on Information-Preserving and Fine-Grained Feature Aggregation](https://www.mdpi.com/2072-4292/16/14/2590) | 无 | *Remote Sensing*, 2024 |
-|  **PRNet**  | [CSDN] | [PRNet: Original Information Is All You Have](https://arxiv.org/abs/2510.09531) | [GitHub](https://github.com/hhao659/PRNet) | *Arxiv*, 2025 |
+|  **PRNet**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/153969350) | [PRNet: Original Information Is All You Have](https://arxiv.org/abs/2510.09531) | [GitHub](https://github.com/hhao659/PRNet) | *Arxiv*, 2025 |
 |  **HS-FPN**  | [CSDN] | [HS-FPN: High Frequency and Spatial Perception FPN for Tiny Object Detection](https://arxiv.org/pdf/2412.10116) | [GitHub](https://github.com/ShiZican/HS-FPN) | *AAAI Conference*, 2025 |
 
 ---
@@ -88,10 +88,10 @@
 | VRF-DETR (改进版)     |  0.632   |   0.0954   | 0.0594 |  0.0189  |
 | YOLOv8s 原版          |  0.548   |   0.189    | 0.193  |  0.0769  |
 | IF-YOLOv8s (改进版)   |  0.647   |   0.190    | 0.193  |  0.0771  |
-| YOLO11n 原版          |  0.364   |   0.162    | 0.159  |  0.0620  |
-| YOLO11n-PRNet (改进版)|
+| YOLO11n 原版          |  0.720   |   0.146    | 0.138  |  0.0518  |
+| YOLO11n-PRNet (改进版)|  0.523   |   0.202    | 0.206  |  0.0851  |  
 > 提示：以上结果均为 **30 epoch 的小规模实验**，仅用于对比分析，不代表完整训练的最终性能。
 
 ## 🙌 致谢
 
-感谢各位研究者开源他们的工作，也欢迎大家补充更多 **Tiny Object Detection** 相关方法！
+感谢各位研究者开源他们的工作，也欢迎大家补充更多 **Tiny Target Detection** 相关方法！
