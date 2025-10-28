@@ -1,6 +1,6 @@
 # Tiny Target Detection
 
-本仓库整理并实现了多个面向 **小目标检测（Tiny Target Detection）** 的改进 YOLO 算法，结合博客解析、论文原文与开源代码，方便学习与复现。
+本仓库整理并实现了多个面向 **小目标检测（Tiny Target Detection）** 的改进算法，结合博客解析、论文原文与开源代码，方便学习与复现。
 
 ## 🚀 使用方法
 
