@@ -63,7 +63,7 @@
 
 > 算法列表的顺序仅跟学习顺序有关
 
-|  方法  |  博客详解  |  论文地址  | 代码仓库  |  发表期刊/会议 & 时间  |
+|  方法  |  博客  |  论文地址  | 代码仓库  |  发表期刊/会议 & 时间  |
 | --------------- | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ---------------------------- |
 |  **FFCA-YOLO**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/151312190) | [FFCA-YOLO for Small Object Detection in Remote Sensing Images](https://ieeexplore.ieee.org/document/10423050) | [GitHub](https://github.com/yemu1138178251/FFCA-YOLO) |*IEEE TGRS*, 2024|
 |  **FBRT-YOLO**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/151573708) | [FBRT-YOLO: Faster and Better for Real-Time Aerial Image Detection](https://arxiv.org/pdf/2504.20670v1) | [GitHub](https://github.com/galaxy-oss/FCM)  |*AAAI Conference*, 2025|
