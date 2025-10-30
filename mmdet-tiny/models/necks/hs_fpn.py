@@ -17,6 +17,7 @@ from einops import rearrange
 from mmcv.cnn import ConvModule
 from mmengine.model import BaseModule
 from mmdet.extra_modules import auto_fp16
+from mmdet.registry import MODELS
 
 __all__ = ['HS_FPN']
 
@@ -115,9 +116,7 @@ class DctChannelInteraction(BaseModule):
         weight[:h0, :w0] = 0
         return weight
 
-    # ------------------------------------------------------------------#
-
-
+# ------------------------------------------------------------------#
 # High Frequency Perception Module HFP
 # ------------------------------------------------------------------#
 class HFP(BaseModule):
@@ -216,6 +215,7 @@ class SDP_Improved(BaseModule):
 # ------------------------------------------------------------------#
 # HS_FPN
 # ------------------------------------------------------------------#
+@MODELS.register_module()
 class HS_FPN(BaseModule):
     def __init__(self,
                  in_channels,
