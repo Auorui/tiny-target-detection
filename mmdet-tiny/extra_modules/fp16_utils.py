@@ -10,7 +10,9 @@ import torch
 import torch.nn as nn
 from torch.nn.parameter import Parameter
 
-from mmcv.utils import IS_NPU_AVAILABLE, TORCH_VERSION, digit_version
+from mmcv.utils import IS_NPU_AVAILABLE
+from mmengine.utils.dl_utils import TORCH_VERSION
+from mmengine.utils import digit_version
 from mmdet.utils.dist_utils import allreduce_grads as _allreduce_grads
 
 try:
