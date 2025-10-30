@@ -53,7 +53,7 @@
    │   └── ...
    ├── configs/
    ├── configs_tiny/               ← 与configs同级
-   ├── get_map.py                  ← 输出与ultralytics格式的指标
+   ├── get_map.py                  ← 输出与ultralytics相同格式的指标
    └── 
    ```
 
