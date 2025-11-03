@@ -27,7 +27,9 @@ from ultralytics.nn.extra_modules import (
     TransformerEncoderLayerMSCF,
     IPFA,
     CSFM,
-    ESSamp
+    ESSamp,
+    HFP,
+    SDP
 )
 from ultralytics.nn.modules import (
     AIFI,
@@ -1614,7 +1616,6 @@ def parse_model(d, ch, verbose=True):
             C2fBRA,
             C2fGMCF,
             IPFA,
-
         }
     )
     repeat_modules = frozenset(  # modules with 'repeat' arguments
@@ -1710,8 +1711,11 @@ def parse_model(d, ch, verbose=True):
         elif m is FFMConcat:
             c2 = sum(ch[x] for x in f)
             args = [c2]
-        elif m is FCM:
-            c1 = ch[f]
+        elif m in {FCM, HFP}:
+            c1 = c2 = ch[f]
+            args = [c1, *args[0:]]
+        elif m is SDP:
+            c1 = c2 = ch[-1]
             args = [c1, *args[0:]]
         elif m in {SCAM, MKP}:
             c2 = ch[f]
