@@ -1,4 +1,4 @@
-# yolov8_hs_fpn_p1_p4.yaml
+# yolov8-hsfpn.yaml
 
 # Parameters
 nc: 80
@@ -23,23 +23,23 @@ backbone:
   - [-1, 1, SPPF, [1024, 5]]     # 9
 
 head:
-  # 侧边连接 (1x1卷积降维，使用动态通道数)
+  # 侧边连接
   - [1, 1, Conv, [256, 1, 1]]    # 10: C1 lateral -> P1输入
   - [4, 1, Conv, [256, 1, 1]]    # 11: C2 lateral -> P2输入
   - [6, 1, Conv, [256, 1, 1]]    # 12: C3 lateral -> P3输入
   - [9, 1, Conv, [256, 1, 1]]    # 13: C4 lateral -> P4输入
 
-  # HFP自注意力 - 使用动态通道数
+  # HFP
   - [13, 1, HFP, [0, 1, 0]]     # 14: Enhanced P4 (no DCT)
   - [12, 1, HFP, [0, 1, 0]]     # 15: Enhanced P3 (no DCT)
   - [11, 1, HFP, [0.25, 8, 1]]  # 16: Enhanced P2 (with DCT)
   - [10, 1, HFP, [0.25, 16, 1]] # 17: Enhanced P1 (with DCT)
 
-  # SDP跨层级注意力 - 使用动态通道数
+  # SDP
   - [[16, 15], 1, SDP, []]    # 18: P2-P3 attention
   - [[17, 18], 1, SDP, []]    # 19: P1-P2 attention
 
-  # 最终3x3卷积 - 使用动态通道数
+  # 最终3x3卷积
   - [14, 1, Conv, [256, 3, 1]]   # 20: Final P4
   - [15, 1, Conv, [256, 3, 1]]   # 21: Final P3
   - [19, 1, Conv, [256, 3, 1]]   # 22: Final P2
