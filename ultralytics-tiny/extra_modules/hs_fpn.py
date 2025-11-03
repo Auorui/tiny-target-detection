@@ -134,29 +134,84 @@ class SDP(nn.Module):
         self.softmax = nn.Softmax(dim=-1)
 
     def forward(self, x):
-        x_low, x_high = x
-        b_, _, h_, w_ = x_low.size()
-        scale_factor = x_high.size(2)
-        patch_size = [scale_factor, scale_factor]
+        # 解包输入
+        if isinstance(x, (list, tuple)) and len(x) == 2:
+            x_low, x_high = x
+        else:
+            return x
 
-        q = rearrange(self.conv_q(x_low), 'b c (h p1) (w p2) -> (b h w) c (p1 p2)',
-                      p1=patch_size[0], p2=patch_size[1])
-        q = q.transpose(1, 2)
+        b, c, h_low, w_low = x_low.size()
+        _, _, h_high, w_high = x_high.size()
 
-        k = rearrange(self.conv_k(x_high), 'b c (h p1) (w p2) -> (b h w) c (p1 p2)',
-                      p1=patch_size[0], p2=patch_size[1])
+        # 自动计算patch_size - 基于两个特征图的比例
+        # patch_size表示网格划分的数量，而不是每个patch的像素大小
+        patch_h = h_high  # 网格行数 = 高层特征的高度
+        patch_w = w_high  # 网格列数 = 高层特征的宽度
 
-        attn = torch.matmul(q, k)
-        attn = attn / np.power(self.inter_dim, 0.5)
-        attn = self.softmax(attn)
+        # 计算每个patch的像素大小
+        patch_size_h = h_low // patch_h  # 每个patch的高度
+        patch_size_w = w_low // patch_w  # 每个patch的宽度
 
-        v = k.transpose(1, 2)
-        output = torch.matmul(attn, v)
-        output = rearrange(output.transpose(1, 2).contiguous(),
-                           '(b h w) c (p1 p2) -> b c (h p1) (w p2)',
-                           p1=patch_size[0], p2=patch_size[1],
-                           h=h_ // patch_size[0], w=w_ // patch_size[1])
-        return output + x_low
+        # 确保能整除
+        if h_low % patch_h != 0 or w_low % patch_w != 0:
+            # 如果不能整除，调整特征图尺寸
+            h_low_aligned = (h_low // patch_h) * patch_h
+            w_low_aligned = (w_low // patch_w) * patch_w
+            x_low = F.interpolate(x_low, size=(h_low_aligned, w_low_aligned), mode='nearest')
+            x_high = F.interpolate(x_high, size=(h_low_aligned, w_low_aligned), mode='nearest')
+            h_low, w_low = h_low_aligned, w_low_aligned
+
+        # 重新计算patch的像素大小
+        patch_size_h = h_low // patch_h
+        patch_size_w = w_low // patch_w
+
+        # 确保patch大小至少为1
+        patch_size_h = max(1, patch_size_h)
+        patch_size_w = max(1, patch_size_w)
+
+        try:
+            # 处理query (低层特征)
+            # 将x_low划分为 patch_h x patch_w 个网格，每个网格大小为 patch_size_h x patch_size_w
+            q = rearrange(self.conv_q(x_low),
+                          'b c (h p1) (w p2) -> (b h w) (p1 p2) c',
+                          p1=patch_size_h, p2=patch_size_w,
+                          h=patch_h, w=patch_w)
+
+            # 处理key (高层特征)
+            # x_high已经具有 patch_h x patch_w 的网格划分
+            k = rearrange(self.conv_k(x_high),
+                          'b c (h p1) (w p2) -> (b h w) c (p1 p2)',
+                          p1=1, p2=1,  # 高层特征的每个"patch"是1x1
+                          h=patch_h, w=patch_w)
+
+            # 计算注意力权重
+            attn = torch.matmul(q, k)  # (b*patch_h*patch_w, patch_size_h*patch_size_w, 1)
+            attn = attn / np.power(self.inter_dim, 0.5)
+            attn = self.softmax(attn)
+
+            # 使用key作为value
+            v = rearrange(self.conv_k(x_high),
+                          'b c (h p1) (w p2) -> (b h w) (p1 p2) c',
+                          p1=1, p2=1,
+                          h=patch_h, w=patch_w)
+
+            # 应用注意力权重
+            output = torch.matmul(attn, v)  # (b*patch_h*patch_w, patch_size_h*patch_size_w, c)
+
+            # 重新排列回原始形状
+            output = rearrange(output,
+                               '(b h w) (p1 p2) c -> b c (h p1) (w p2)',
+                               p1=patch_size_h, p2=patch_size_w,
+                               h=patch_h, w=patch_w,
+                               b=b)
+
+            return output + x_low
+
+        except Exception as e:
+            print(f"SDP error: {e}")
+            print(f"x_low: {x_low.shape}, x_high: {x_high.shape}")
+            print(f"patch_h: {patch_h}, patch_w: {patch_w}")
+            print(f"patch_size_h: {patch_size_h}, patch_size_w: {patch_size_w}")
 
 class SDPv2(nn.Module):
     def __init__(self, dim=256, inter_dim=None):
