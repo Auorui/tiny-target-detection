@@ -24,7 +24,7 @@ to_ntuple = _ntuple
 
 class ConvNormAct(nn.Module):
     def __init__(self, in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1,
-                 norm_layer=nn.BatchNorm2d, activation_layer=nn.ReLU, inplace=True, bias=True, apply_act=True,):
+                 norm_layer=nn.BatchNorm2d, activation_layer=nn.ReLU, bias=True, apply_act=True,):
         super(ConvNormAct, self).__init__()
         self.in_channels = in_channels
         self.out_channels = out_channels
@@ -33,7 +33,7 @@ class ConvNormAct(nn.Module):
                               padding=(kernel_size - 1) // 2 if padding is None else padding,
                               dilation=dilation, groups=groups, bias=bias)
         self.norm = norm_layer(out_channels) if norm_layer else None
-        self.act = nn.Identity() if activation_layer is None else activation_layer(inplace)
+        self.act = nn.Identity() if activation_layer is None else activation_layer()
 
     def forward(self, x):
         x = self.conv(x)
@@ -78,4 +78,5 @@ class LayerNorm(nn.Module):
             s = (x - u).pow(2).mean(1, keepdim=True)
             x = (x - u) / torch.sqrt(s + self.eps)
             x = self.weight[:, None, None] * x + self.bias[:, None, None]
+
             return x
