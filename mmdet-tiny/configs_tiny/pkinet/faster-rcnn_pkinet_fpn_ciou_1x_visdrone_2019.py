@@ -1,6 +1,6 @@
 auto_scale_lr = dict(base_batch_size=16, enable=False)
 backend_args = None
-checkpoint = ''
+checkpoints = r'E:\PythonProject\mmdetection\pkinet_s_pretrain.pth'
 data_root = 'E:\\PythonProject\\mmdetection\\data\\VisDrone/'
 dataset_type = 'CocoDataset'
 default_hooks = dict(
@@ -95,7 +95,7 @@ model = dict(
         arch='T',
         drop_path_rate=0.1,
         frozen_stages=1,
-        # init_cfg=dict(checkpoint=checkpoint, prefix='backbone.', type='Pretrained'),
+        init_cfg=dict(checkpoint=checkpoints, prefix='backbone.', type='Pretrained'),
         norm_cfg=dict(requires_grad=True, type='SyncBN'),
         norm_eval=True,
         out_indices=(
