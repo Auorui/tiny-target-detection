@@ -254,8 +254,8 @@ model = dict(
             nms_pre=2000)),
     type='FasterRCNN')
 optim_wrapper = dict(
-    clip_grad=None,
-    optimizer=dict(lr=0.0025, momentum=0.9, type='SGD', weight_decay=0.0001),
+    clip_grad=dict(max_norm=35, norm_type=2),
+    optimizer=dict(lr=0.00025, momentum=0.9, type='SGD', weight_decay=0.0001),
     type='OptimWrapper')
 param_scheduler = [
     dict(
