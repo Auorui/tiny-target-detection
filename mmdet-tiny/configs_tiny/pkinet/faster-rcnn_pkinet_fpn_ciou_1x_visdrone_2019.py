@@ -256,7 +256,7 @@ model = dict(
 optim_wrapper = dict(
     clip_grad=None,
     optimizer=dict(lr=0.0025, momentum=0.9, type='SGD', weight_decay=0.0001),
-    type='AmpOptimWrapper')
+    type='OptimWrapper')
 param_scheduler = [
     dict(
         begin=0, by_epoch=False, end=500, start_factor=0.001, type='LinearLR'),
@@ -604,4 +604,3 @@ visualizer = dict(
         dict(type='LocalVisBackend'),
     ])
 work_dir = './work_dirs\\faster-rcnn_pkinet_fpn_ciou_1x_visdrone_2019'
-
