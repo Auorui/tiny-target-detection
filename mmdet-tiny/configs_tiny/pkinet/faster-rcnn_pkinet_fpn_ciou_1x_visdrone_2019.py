@@ -1,6 +1,6 @@
 auto_scale_lr = dict(base_batch_size=16, enable=False)
 backend_args = None
-checkpoints = r'E:\PythonProject\mmdetection\pkinet_s_pretrain.pth'
+checkpoints = r'E:\PythonProject\mmdetection\pkinet_t_pretrain.pth'
 data_root = 'E:\\PythonProject\\mmdetection\\data\\VisDrone/'
 dataset_type = 'CocoDataset'
 default_hooks = dict(
@@ -604,3 +604,4 @@ visualizer = dict(
         dict(type='LocalVisBackend'),
     ])
 work_dir = './work_dirs\\faster-rcnn_pkinet_fpn_ciou_1x_visdrone_2019'
+
