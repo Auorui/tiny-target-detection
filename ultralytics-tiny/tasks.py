@@ -29,7 +29,9 @@ from ultralytics.nn.extra_modules import (
     CSFM,
     ESSamp,
     HFP,
-    SDP
+    SDP,
+    PKIStem,
+    PKIStage,
 )
 from ultralytics.nn.modules import (
     AIFI,
@@ -1635,6 +1637,7 @@ def parse_model(d, ch, verbose=True):
             C2fCIB,
             C2PSA,
             A2C2f,
+            # add model
             C2fBRA,
             C2fGMCF,
             IPFA,
@@ -1714,6 +1717,9 @@ def parse_model(d, ch, verbose=True):
         elif m in {FCM, HFP}:
             c1 = c2 = ch[f]
             args = [c1, *args[0:]]
+        elif m in {PKIStage, PKIStem}:
+            c1, c2 = ch[f], args[0]
+            args = [c1, c2, *args[1:]]
         elif m is SDP:
             c1 = c2 = ch[-1]
             args = [c1, *args[0:]]
