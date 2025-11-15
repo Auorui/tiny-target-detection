@@ -63,18 +63,35 @@
 
 > 算法列表的顺序仅跟学习顺序有关
 
-| 方法         | 博客 | 论文地址 | 代码仓库 | 发表期刊/会议 & 时间 |
-|-------------|------|----------|----------|---------------------|
-|  **FFCA-YOLO**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/151312190) | [FFCA-YOLO for Small Object Detection in Remote Sensing Images](https://ieeexplore.ieee.org/document/10423050) | [GitHub](https://github.com/yemu1138178251/FFCA-YOLO) |*IEEE TGRS*, 2024|
-|  **FBRT-YOLO**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/151573708) | [FBRT-YOLO: Faster and Better for Real-Time Aerial Image Detection](https://arxiv.org/pdf/2504.20670v1) | [GitHub](https://github.com/galaxy-oss/FCM)  |*AAAI Conference*, 2025|
-|  **LUD-YOLO**   | [CSDN](https://blog.csdn.net/m0_62919535/article/details/152164243) | [LUD-YOLO: A novel lightweight object detection network for unmanned aerial vehicle](https://www.sciencedirect.com/science/article/pii/S0020025524012805) | 无 |*Information Sciences*, 2025|
-|  **VRF-DETR**   | [CSDN](https://blog.csdn.net/m0_62919535/article/details/152615666) | [An Efficient Aerial Image Detection with Variable Receptive Fields](https://arxiv.org/pdf/2504.15165) | [GitHub](https://github.com/LiuWenbin-CV/VRF-DETR) |*Arxiv*, 2025| 
-|  **IF-YOLO**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/153835570) | [Unmanned Aerial Vehicle Object Detection Based on Information-Preserving and Fine-Grained Feature Aggregation](https://www.mdpi.com/2072-4292/16/14/2590) | 无 | *Remote Sensing*, 2024 |
-|  **PRNet**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/153969350) | [PRNet: Original Information Is All You Have](https://arxiv.org/abs/2510.09531) | [GitHub](https://github.com/hhao659/PRNet) | *Arxiv*, 2025 |
-|  **HS-FPN**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/154121182) | [HS-FPN: High Frequency and Spatial Perception FPN for Tiny Object Detection](https://arxiv.org/pdf/2412.10116) | [GitHub](https://github.com/ShiZican/HS-FPN) | *AAAI Conference*, 2025 |
-|  **PKINet**  | [CSDN] | [Poly Kernel Inception Network for Remote Sensing Detection](https://arxiv.org/pdf/2403.06258) | [GitHub](https://github.com/NUST-Machine-Intelligence-Laboratory/PKINet) | *CVPR Conference*, 2024 |
-|  **MAF-YOLO**  | [CSDN] | [Multi-Branch Auxiliary Fusion YOLO with Re-parameterization Heterogeneous Convolutional for accurate object detection](https://arxiv.org/pdf/2407.04381) | [GitHub](https://github.com/yang-0201/MAF-YOLO) | *PRCV Conference*, 2024 |
-|  **MHAF-YOLO**  | [CSDN] | [MHAF-YOLO: Multi-Branch Heterogeneous Auxiliary Fusion YOLO for accurate object detection](https://arxiv.org/pdf/2502.04656) | [GitHub](https://github.com/yang-0201/MHAF-YOLO) | *Arxiv*, 2025 |
+### 📋 方法基本信息表
+| 方法 | 博客 | 代码仓库 | 发表期刊/会议 & 时间 |
+|:---|------|----------|---------------------|
+| **FFCA-YOLO** | [CSDN](https://blog.csdn.net/m0_62919535/article/details/151312190) | [https://github.com/yemu1138178251/FFCA-YOLO](https://github.com/yemu1138178251/FFCA-YOLO) | *IEEE TGRS*, 2024 |
+| **FBRT-YOLO** | [CSDN](https://blog.csdn.net/m0_62919535/article/details/151573708) | [https://github.com/galaxy-oss/FCM](https://github.com/galaxy-oss/FCM) | *AAAI Conference*, 2025 |
+| **LUD-YOLO** | [CSDN](https://blog.csdn.net/m0_62919535/article/details/152164243) | 无 | *Information Sciences*, 2025 |
+| **VRF-DETR** | [CSDN](https://blog.csdn.net/m0_62919535/article/details/152615666) | [https://github.com/LiuWenbin-CV/VRF-DETR](https://github.com/LiuWenbin-CV/VRF-DETR) | *Arxiv*, 2025 |
+| **IF-YOLO** | [CSDN](https://blog.csdn.net/m0_62919535/article/details/153835570) | 无 | *Remote Sensing*, 2024 |
+| **PRNet** | [CSDN](https://blog.csdn.net/m0_62919535/article/details/153969350) | [https://github.com/hhao659/PRNet](https://github.com/hhao659/PRNet) | *Arxiv*, 2025 |
+| **HS-FPN** | [CSDN](https://blog.csdn.net/m0_62919535/article/details/154121182) | [https://github.com/ShiZican/HS-FPN](https://github.com/ShiZican/HS-FPN) | *AAAI Conference*, 2025 |
+| **PKINet** | [CSDN] | [https://github.com/NUST-Machine-Intelligence-Laboratory/PKINet](https://github.com/NUST-Machine-Intelligence-Laboratory/PKINet) | *CVPR Conference*, 2024 |
+| **MAF-YOLO** | [CSDN] | [https://github.com/yang-0201/MAF-YOLO](https://github.com/yang-0201/MAF-YOLO) | *PRCV Conference*, 2024 |
+| **MHAF-YOLO** | [CSDN] | [https://github.com/yang-0201/MHAF-YOLO](https://github.com/yang-0201/MHAF-YOLO) | *Arxiv*, 2025 |
+
+### 📖 论文详细信息表
+| 方法 | 论文标题与链接 |
+|:---|----------------|
+| **FFCA-YOLO** | [FFCA-YOLO for Small Object Detection in Remote Sensing Images](https://ieeexplore.ieee.org/document/10423050) |
+| **FBRT-YOLO** | [FBRT-YOLO: Faster and Better for Real-Time Aerial Image Detection](https://arxiv.org/pdf/2504.20670v1) |
+| **LUD-YOLO** | [LUD-YOLO: A novel lightweight object detection network for unmanned aerial vehicle](https://www.sciencedirect.com/science/article/pii/S0020025524012805) |
+| **VRF-DETR** | [An Efficient Aerial Image Detection with Variable Receptive Fields](https://arxiv.org/pdf/2504.15165) |
+| **IF-YOLO** | [Unmanned Aerial Vehicle Object Detection Based on Information-Preserving and Fine-Grained Feature Aggregation](https://www.mdpi.com/2072-4292/16/14/2590) |
+| **PRNet** | [PRNet: Original Information Is All You Have](https://arxiv.org/abs/2510.09531) |
+| **HS-FPN** | [HS-FPN: High Frequency and Spatial Perception FPN for Tiny Object Detection](https://arxiv.org/pdf/2412.10116) |
+| **PKINet** | [Poly Kernel Inception Network for Remote Sensing Detection](https://arxiv.org/pdf/2403.06258) |
+| **MAF-YOLO** | [Multi-Branch Auxiliary Fusion YOLO with Re-parameterization Heterogeneous Convolutional for accurate object detection](https://arxiv.org/pdf/2407.04381) |
+| **MHAF-YOLO** | [MHAF-YOLO: Multi-Branch Heterogeneous Auxiliary Fusion YOLO for accurate object detection](https://arxiv.org/pdf/2502.04656) |
+
+
 
 ---
 
