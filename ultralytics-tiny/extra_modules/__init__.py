@@ -7,3 +7,4 @@ from .ifyolo import IPFA, CSFM
 from .prnet import ESSamp
 from .hs_fpn import HFP, SDP
 from .pkinet import PKIStem, PKIStage
+from .mhafyolo import RepHMS, AVG
