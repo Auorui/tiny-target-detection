@@ -68,13 +68,13 @@
 |  **FFCA-YOLO**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/151312190) | [FFCA-YOLO for Small Object Detection in Remote Sensing Images](https://ieeexplore.ieee.org/document/10423050) | [GitHub](https://github.com/yemu1138178251/FFCA-YOLO) |*IEEE TGRS*, 2024|
 |  **FBRT-YOLO**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/151573708) | [FBRT-YOLO: Faster and Better for Real-Time Aerial Image Detection](https://arxiv.org/pdf/2504.20670v1) | [GitHub](https://github.com/galaxy-oss/FCM)  |*AAAI Conference*, 2025|
 |  **LUD-YOLO**   | [CSDN](https://blog.csdn.net/m0_62919535/article/details/152164243) | [LUD-YOLO: A novel lightweight object detection network for unmanned aerial vehicle](https://www.sciencedirect.com/science/article/pii/S0020025524012805) | 无 |*Information Sciences*, 2025|
-|  **VRF-DETR**   | [CSDN](https://blog.csdn.net/m0_62919535/article/details/152615666) | [An Efficient Aerial Image Detection with Variable Receptive Fields](https://arxiv.org/pdf/2504.15165) | [GitHub](https://github.com/LiuWenbin-CV/VRF-DETR) |*Arxiv*, 2025| 
+|  **VRF-DETR**   | [CSDN](https://blog.csdn.net/m0_62919535/article/details/152615666) | [An Efficient Aerial Image Detection with Variable Receptive Fields](https://arxiv.org/pdf/2504.15165) | [GitHub](https://github.com/LiuWenbin-CV/VRF-DETR) |*Remote Sensing*, 2025| 
 |  **IF-YOLO**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/153835570) | [Unmanned Aerial Vehicle Object Detection Based on Information-Preserving and Fine-Grained Feature Aggregation](https://www.mdpi.com/2072-4292/16/14/2590) | 无 | *Remote Sensing*, 2024 |
 |  **PRNet**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/153969350) | [PRNet: Original Information Is All You Have](https://arxiv.org/abs/2510.09531) | [GitHub](https://github.com/hhao659/PRNet) | *Arxiv*, 2025 |
 |  **HS-FPN**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/154121182) | [HS-FPN: High Frequency and Spatial Perception FPN for Tiny Object Detection](https://arxiv.org/pdf/2412.10116) | [GitHub](https://github.com/ShiZican/HS-FPN) | *AAAI Conference*, 2025 |
 |  **PKINet**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/154732499) | [Poly Kernel Inception Network for Remote Sensing Detection](https://arxiv.org/pdf/2403.06258) | [GitHub](https://github.com/NUST-Machine-Intelligence-Laboratory/PKINet) | *CVPR Conference*, 2024 |
-|  **MHAF-YOLO**  | [CSDN] | [MHAF-YOLO: Multi-Branch Heterogeneous Auxiliary Fusion YOLO for accurate object detection](https://arxiv.org/pdf/2502.04656) | [GitHub](https://github.com/yang-0201/MHAF-YOLO) | *Arxiv*, 2025 |
-
+|  **MHAF-YOLO**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/155198613) | [MHAF-YOLO: Multi-Branch Heterogeneous Auxiliary Fusion YOLO for accurate object detection](https://arxiv.org/pdf/2502.04656) | [GitHub](https://github.com/yang-0201/MHAF-YOLO) | *Arxiv*, 2025 |
+|  **LAM-YOLO**  | [CSDN] | [LAM-YOLO: Drones-based Small Object Detection on Lighting-Occlusion Attention Mechanism YOLO](https://arxiv.org/pdf/2411.00485) | 无 | *Computer Vision and Image Understanding*, 2025 |
 
 ---
 
@@ -99,7 +99,7 @@
 | YOLO11n-PRNet (改进版) |  0.523   |   0.202    | 0.206  |  0.0851  |  
 | YOLOv8n-hsfpn (改进版) |  0.540   |   0.173    | 0.171  |  0.0679  | 
 | YOLO11n-PKINet (改进版)|  0.469   |   0.109    | 0.105  |  0.0377  |
-| MHAF-YOLO (改进版)     |  0.   |   0.    | 0.  |  0.0  |
+| MHAF-YOLOv10n (改进版) |  0.434   |   0.0949   | 0.0919 |  0.0338  |
 > 提示：以上结果均为 **30 epoch 的小规模实验**，仅用于对比分析，不代表完整训练的最终性能。
 
 
