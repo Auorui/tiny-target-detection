@@ -32,6 +32,8 @@ from ultralytics.nn.extra_modules import (
     SDP,
     PKIStem,
     PKIStage,
+    RepHMS,
+    AVG,
 )
 from ultralytics.nn.modules import (
     AIFI,
@@ -1618,6 +1620,7 @@ def parse_model(d, ch, verbose=True):
             C2fBRA,
             C2fGMCF,
             IPFA,
+            RepHMS,
         }
     )
     repeat_modules = frozenset(  # modules with 'repeat' arguments
@@ -1709,6 +1712,10 @@ def parse_model(d, ch, verbose=True):
             args = [c1, c2, *args[1:]]
         elif m is ESSamp:
             c1, c2 = args[0], args[1]
+        elif m is AVG:
+            if not args:  # 检查args是否为空
+                args = [2]
+            c2 = ch[f]
         elif m is CBFuse:
             c2 = ch[f[-1]]
         elif m is FFMConcat:
