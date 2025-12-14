@@ -34,6 +34,8 @@ from ultralytics.nn.extra_modules import (
     PKIStage,
     RepHMS,
     AVG,
+    LAM,
+    involution,
 )
 from ultralytics.nn.modules import (
     AIFI,
@@ -1730,7 +1732,7 @@ def parse_model(d, ch, verbose=True):
         elif m is SDP:
             c1 = c2 = ch[-1]
             args = [c1, *args[0:]]
-        elif m in {SCAM, MKP}:
+        elif m in {SCAM, MKP, LAM}:
             c2 = ch[f]
             args = [c2]
         elif m is CSFM:
@@ -1743,6 +1745,10 @@ def parse_model(d, ch, verbose=True):
             actual_channels = [ch[x] for x in f]  # Get actual channels from input layers
             c2 = actual_channels[level]  # output channels based on level
             args = [level, actual_channels]
+        elif m is involution:
+            # involution: [channels, kernel_size, stride]
+            c1 = c2 = ch[f]
+            args = [c2, *args[1:]]
         elif m in frozenset({TorchVision, Index}):
             c2 = args[0]
             c1 = ch[f]
