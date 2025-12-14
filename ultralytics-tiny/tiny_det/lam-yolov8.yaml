@@ -90,4 +90,4 @@ head:
   - [-1, 1, LAM, [1024]] # 40 LAM after P5 downsampling
 
   # 检测头
-  - [[24, 28, 32, 36, 40], 1, Detect, [nc]] # Detect(P1, P3, P4, P5)
+  - [[24, 28, 32, 36, 40], 1, Detect, [nc]] # Detect(P1, P2, P3, P4, P5)
