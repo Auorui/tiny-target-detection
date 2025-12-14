@@ -1,0 +1,93 @@
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
+# Ultralytics YOLOv8 object detection model with P3/8 - P5/32 outputs
+# Model docs: https://docs.ultralytics.com/models/yolov8
+# Task docs: https://docs.ultralytics.com/tasks/detect
+
+# Parameters
+nc: 80 # number of classes
+scales: # model compound scaling constants, i.e. 'model=yolov8n.yaml' will call yolov8.yaml with scale 'n'
+  # [depth, width, max_channels]
+  n: [0.33, 0.25, 1024] # YOLOv8n summary: 129 layers, 3157200 parameters, 3157184 gradients, 8.9 GFLOPS
+  s: [0.33, 0.50, 1024] # YOLOv8s summary: 129 layers, 11166560 parameters, 11166544 gradients, 28.8 GFLOPS
+  m: [0.67, 0.75, 768] # YOLOv8m summary: 169 layers, 25902640 parameters, 25902624 gradients, 79.3 GFLOPS
+  l: [1.00, 1.00, 512] # YOLOv8l summary: 209 layers, 43691520 parameters, 43691504 gradients, 165.7 GFLOPS
+  x: [1.00, 1.25, 512] # YOLOv8x summary: 209 layers, 68229648 parameters, 68229632 gradients, 258.5 GFLOPS
+
+# YOLOv8.0n backbone
+backbone:
+  # input -> 640×640×3
+  # [from, repeats, module, args]
+  - [-1, 1, Conv, [64, 3, 2]] # 0-P1/2  C1         320×320×64
+  - [-1, 1, Conv, [128, 3, 2]] # 1-P2/4            160×160×128
+  - [-1, 3, C2f, [128, True]]  #        C2         160×160×128
+  - [-1, 1, Conv, [256, 3, 2]] # 3-P3/8            80×80×256
+  - [-1, 6, C2f, [256, True]]  #        C3         80×80×256
+  - [-1, 1, Conv, [512, 3, 2]] # 5-P4/16           40×40×512
+  - [-1, 6, C2f, [512, True]]  #        C4         40×40×512
+  - [-1, 1, LAM, [512]] # 7 LAM 1 between C4 and C5 (使用默认参数)
+  - [-1, 1, Conv, [1024, 3, 2]] # 8-P5/32          20×20×1024
+  - [-1, 3, C2f, [1024, True]]  #                  20×20×1024
+  - [-1, 1, SPPF, [1024, 5]] # 10        C5        20×20×1024
+
+# YOLOv8.0n head
+head:
+  # FPN 路径（自顶向下）
+  - [-1, 1, involution, [1024, 7, 1]] # 11
+  # 上采样 P5 -> P4
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]] #   40×40×1024
+  # 连接 P4 和上采样后的 P5
+  - [[-1, 6], 1, Concat, [1]] # cat backbone P4 (注意索引还是为6，不是与LAM层相拼接)
+  # 融合特征
+  - [-1, 3, C2f, [512]] # 14                       40×40×512
+
+  # 上采样 P4 -> P3
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]] # 15   80×80×512
+  # 连接 P3 和上采样后的 P4
+  - [[-1, 4], 1, Concat, [1]] # 16 cat backbone P3
+  # 融合特征 (P3/8-small)
+  - [-1, 3, C2f, [256]] # 17 (P3/8-small)          80×80×256
+
+  # 上采样 P3 -> P2
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]] # 18   160×160×256
+  # 连接 P2 和上采样后的 P3
+  - [[-1, 2], 1, Concat, [1]] # 19 cat backbone P3
+  # 融合特征 (P3/8-small)
+  - [-1, 3, C2f, [128]] # 20 (P3/8-small)          160×160×128
+
+  # 上采样 P2 -> P1
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]] # 21   320×320×128
+  # 连接 P2 和上采样后的 P3
+  - [[-1, 0], 1, Concat, [1]] # 22 cat backbone P3
+  # 融合特征 (P3/8-small)
+  - [-1, 3, C2f, [64]] # 23 (P3/8-small)          320×320×64
+
+  - [-1, 1, LAM, [64]] # 24 LAM 2 after FPN
+
+  # PAN 路径（自底向上）
+  # 下采样 P1 -> P2
+  - [-1, 1, Conv, [64, 3, 2]]
+  - [[-1, 20], 1, Concat, [1]]
+  - [-1, 3, C2f, [128]]
+  - [-1, 1, LAM, [128]] # 28 LAM after P2 downsampling
+
+  # 下采样 P2 -> P3
+  - [-1, 1, Conv, [128, 3, 2]]
+  - [[-1, 17], 1, Concat, [1]]
+  - [-1, 3, C2f, [256]]
+  - [-1, 1, LAM, [256]] # 32 LAM after P3 downsampling
+
+  # 下采样 P3 -> P4
+  - [-1, 1, Conv, [256, 3, 2]]
+  - [[-1, 14], 1, Concat, [1]]
+  - [-1, 3, C2f, [512]]
+  - [-1, 1, LAM, [512]] # 36 LAM after P4 downsampling
+
+  # 下采样 P4 -> P5
+  - [-1, 1, Conv, [512, 3, 2]]
+  - [[-1, 10], 1, Concat, [1]] # with C5
+  - [-1, 3, C2f, [1024]]
+  - [-1, 1, LAM, [1024]] # 40 LAM after P5 downsampling
+
+  # 检测头
+  - [[24, 28, 32, 36, 40], 1, Detect, [nc]] # Detect(P1, P3, P4, P5)
