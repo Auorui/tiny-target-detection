@@ -8,3 +8,4 @@ from .prnet import ESSamp
 from .hs_fpn import HFP, SDP
 from .pkinet import PKIStem, PKIStage
 from .mhafyolo import RepHMS, AVG
+from .lamyolo import involution, LAM
