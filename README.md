@@ -75,7 +75,7 @@
 |  **PKINet**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/154732499) | [Poly Kernel Inception Network for Remote Sensing Detection](https://arxiv.org/pdf/2403.06258) | [GitHub](https://github.com/NUST-Machine-Intelligence-Laboratory/PKINet) | *CVPR Conference*, 2024 |
 |  **MHAF-YOLO**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/155198613) | [MHAF-YOLO: Multi-Branch Heterogeneous Auxiliary Fusion YOLO for accurate object detection](https://arxiv.org/pdf/2502.04656) | [GitHub](https://github.com/yang-0201/MHAF-YOLO) | *Arxiv*, 2025 |
 |  **LAM-YOLO**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/155856916) | [LAM-YOLO: Drones-based Small Object Detection on Lighting-Occlusion Attention Mechanism YOLO](https://arxiv.org/pdf/2411.00485) | 无 | *Computer Vision and Image Understanding*, 2025 |
-|  **Pconv**  | [CSDN] | [Pinwheel-shaped Convolution and Scale-based Dynamic Loss for Infrared Small Target Detection](https://arxiv.org/pdf/2412.16986) | 无 | *AAAI Conference*, 2025 |
+|  **Pconv**  | [CSDN] | [Pinwheel-shaped Convolution and Scale-based Dynamic Loss for Infrared Small Target Detection](https://arxiv.org/pdf/2412.16986) | [GitHub](https://github.com/JN-Yang/PConv-SDloss-Data) | *AAAI Conference*, 2025 |
 
 ---
 
