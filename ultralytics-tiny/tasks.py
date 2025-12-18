@@ -36,6 +36,8 @@ from ultralytics.nn.extra_modules import (
     AVG,
     LAM,
     involution,
+    PConv,
+    APC2f,
 )
 from ultralytics.nn.modules import (
     AIFI,
@@ -1623,6 +1625,8 @@ def parse_model(d, ch, verbose=True):
             C2fGMCF,
             IPFA,
             RepHMS,
+            PConv,
+            APC2f
         }
     )
     repeat_modules = frozenset(  # modules with 'repeat' arguments
@@ -1646,6 +1650,8 @@ def parse_model(d, ch, verbose=True):
             C2fBRA,
             C2fGMCF,
             IPFA,
+            PConv,
+            APC2f
         }
     )
     for i, (f, n, m, args) in enumerate(d["backbone"] + d["head"]):  # from, number, module, args
