@@ -75,7 +75,7 @@
 |  **PKINet**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/154732499) | [Poly Kernel Inception Network for Remote Sensing Detection](https://arxiv.org/pdf/2403.06258) | [GitHub](https://github.com/NUST-Machine-Intelligence-Laboratory/PKINet) | *CVPR Conference*, 2024 |
 |  **MHAF-YOLO**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/155198613) | [MHAF-YOLO: Multi-Branch Heterogeneous Auxiliary Fusion YOLO for accurate object detection](https://arxiv.org/pdf/2502.04656) | [GitHub](https://github.com/yang-0201/MHAF-YOLO) | *Arxiv*, 2025 |
 |  **LAM-YOLO**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/155856916) | [LAM-YOLO: Drones-based Small Object Detection on Lighting-Occlusion Attention Mechanism YOLO](https://arxiv.org/pdf/2411.00485) | 无 | *Computer Vision and Image Understanding*, 2025 |
-|  **Pconv**  | [CSDN] | [Pinwheel-shaped Convolution and Scale-based Dynamic Loss for Infrared Small Target Detection](https://arxiv.org/pdf/2412.16986) | [GitHub](https://github.com/JN-Yang/PConv-SDloss-Data) | *AAAI Conference*, 2025 |
+|  **Pconv**  | [CSDN](https://blog.csdn.net/m0_62919535/article/details/155908238) | [Pinwheel-shaped Convolution and Scale-based Dynamic Loss for Infrared Small Target Detection](https://arxiv.org/pdf/2412.16986) | [GitHub](https://github.com/JN-Yang/PConv-SDloss-Data) | *AAAI Conference*, 2025 |
 
 ---
 
@@ -102,7 +102,7 @@
 | YOLO11n-PKINet (改进版)|  0.469   |   0.109    | 0.105  |  0.0377  |
 | MHAF-YOLOv10n (改进版) |  0.434   |   0.0949   | 0.0919 |  0.0338  |
 | LAM-YOLOv8n (改进版)   |  0.717   |   0.108    | 0.126  |  0.0559  |
-| YOLOv8n-pconv (改进版) |  0.   |   0.   | 0. |  0.0  |
+| YOLOv8n-pconv (改进版) |  0.0103  |   0.0143   | 0.00476|  0.00145 |
 > 提示：以上结果均为 **30 epoch 的小规模实验**，仅用于对比分析，不代表完整训练的最终性能。
 
 
