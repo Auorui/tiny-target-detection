@@ -78,5 +78,83 @@ class LayerNorm(nn.Module):
             s = (x - u).pow(2).mean(1, keepdim=True)
             x = (x - u) / torch.sqrt(s + self.eps)
             x = self.weight[:, None, None] * x + self.bias[:, None, None]
-
             return x
+
+
+class BCHW2BHWC(nn.Module):
+    def __init__(self):
+        super().__init__()
+
+    @staticmethod
+    def forward(x):
+        return x.permute([0, 2, 3, 1])
+
+
+class BHWC2BCHW(nn.Module):
+    def __init__(self):
+        super().__init__()
+
+    @staticmethod
+    def forward(x):
+        return x.permute([0, 3, 1, 2])
+
+def make_divisible(value, divisor, min_value=None, min_ratio=0.9):
+    """Make divisible function.
+
+    This function rounds the channel number to the nearest value that can be
+    divisible by the divisor. It is taken from the original tf repo. It ensures
+    that all layers have a channel number that is divisible by divisor. It can
+    be seen here: https://github.com/tensorflow/models/blob/master/research/slim/nets/mobilenet/mobilenet.py  # noqa
+
+    Args:
+        value (int): The original channel number.
+        divisor (int): The divisor to fully divide the channel number.
+        min_value (int): The minimum value of the output channel.
+            Default: None, means that the minimum value equal to the divisor.
+        min_ratio (float): The minimum ratio of the rounded channel number to
+            the original channel number. Default: 0.9.
+
+    Returns:
+        int: The modified output channel number.
+    """
+
+    if min_value is None:
+        min_value = divisor
+    new_value = max(min_value, int(value + divisor / 2) // divisor * divisor)
+    # Make sure that round down does not go down by more than (1-min_ratio).
+    if new_value < min_ratio * value:
+        new_value += divisor
+    return new_value
+
+
+class PartialConv2d(nn.Module):
+    def __init__(self, dim, n_div, kernel_size=3, forward='split_cat'):
+        """
+        PartialConv
+        code from: https://github.com/JierunChen/FasterNet/blob/master/models/fasternet.py
+        """
+        super().__init__()
+        self.dim_conv3 = dim // n_div
+        self.dim_untouched = dim - self.dim_conv3
+        self.partial_conv3 = nn.Conv2d(self.dim_conv3, self.dim_conv3, kernel_size, 1, 1, bias=False)
+
+        if forward == 'slicing':
+            self.forward = self.forward_slicing
+        elif forward == 'split_cat':
+            self.forward = self.forward_split_cat
+        else:
+            raise NotImplementedError
+
+    def forward_slicing(self, x):
+        # only for inference
+        x = x.clone()   # !!! Keep the original input intact for the residual connection later
+        x[:, :self.dim_conv3, :, :] = self.partial_conv3(x[:, :self.dim_conv3, :, :])
+
+        return x
+
+    def forward_split_cat(self, x):
+        # for training/inference
+        x1, x2 = torch.split(x, [self.dim_conv3, self.dim_untouched], dim=1)
+        x1 = self.partial_conv3(x1)
+        x = torch.cat((x1, x2), 1)
+        return x
