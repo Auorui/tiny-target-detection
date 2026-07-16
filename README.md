@@ -19,7 +19,7 @@
 
    - 将 `extra_modules` 文件夹放到 `./ultralytics/nn/` 下，与 `modules` 处于同目录下  
    - 将 `tiny_det` 文件夹放到 `./ultralytics/cfg/models/` 下  
-   - 将 `task.py` 文件替换掉 `./ultralytics/nn/task.py`（主要修改的是其中的 `parse_model` 函数）  
+   - 将 `task.py` 文件替换掉 `./ultralytics/nn/task.py`（task会随ultralytics版本发生变更，主要修改的是其中的 `parse_model` 函数）  
    - ⚠️ 注意：`tiny_det` 中的一些函数可能还需要在对应的 `__init__.py` 文件中进行导入  
 
 ---
